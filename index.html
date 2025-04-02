@@ -1,0 +1,2455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Hugo 0.66.0" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 引入Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+
+  <!-- 引入jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- 引入Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/skeleton.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="alternate" href="index.xml" type="application/rss+xml" title="Speech Research">
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+  <style>
+    body {
+      font-size: 20px; /* 设置默认字体大小 */
+
+    }
+    h1{ font-size:30px; 
+      color:black"
+
+    }
+    thead{
+      border-top: 1px solid #ccc; 
+    }
+  td {
+    vertical-align: top;
+    text-align: center;
+  }
+    .table td{
+      border: none
+    }
+    .no-border {
+    border: none;
+  }
+
+  th{
+    font-weight: lighter;
+  }
+
+    .table-container {
+      overflow-x: auto;
+      /* width:120%; */
+      width: 100%;
+      /* margin: 20px; */
+    }
+
+    .table-container2 {
+    table-layout: fixed;
+    word-break: break-word;
+    width: 90%; /* 适当调整宽度 */
+    margin: 0 auto; /* 居中对齐 */
+    }
+
+    .divider {
+    border-top: 2px solid #ccc; /* 灰色边框 */
+    margin: 20px 0; /* 适当调整上下边距 */
+  }
+
+    .audio-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none
+    }
+
+    td{
+      text-align: justify; 
+      color:black;
+      font-family: georgian;
+    }
+
+    font{ text-align: justify; 
+      color:black;
+      font-family: georgian;
+
+    }
+
+      video {
+      width: 640px; /* 设置视频宽度 */
+      height: 360px; /* 设置视频高度 */
+    }
+    @media(min-width:1200px){
+      .table-container {
+      overflow-x: auto;
+      width:100%;
+      margin: 0 auto;
+
+    }
+    }
+    @media (max-width: 600px) {
+      /* 在手机屏幕上应用以下样式 */
+      body {
+        font-size: 14px; /* 缩小字体大小 */
+      }
+      h1 {
+        font-size: 22px; /* 缩小标题字体大小 */
+      }
+      h2 {
+        font-size: 18px; /* 缩小标题字体大小 */
+      }
+      nav ul li {
+        display: block; /* 列表项显示为块级元素，方便手机点击 */
+      }
+      .video-container {
+        padding-bottom: 75%; /* 4:3宽高比，调整此值适配其他比例的视频 */
+      }
+      video {
+      width: 400px; /* 设置视频宽度 */
+      /* height: 360px; 设置视频高度 */
+      }
+    }
+    .sound-table-container {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+  }
+
+  .sound-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .sound-table th,
+  .sound-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .sound-table th {
+    background-color: #f5f5f5;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  </style>
+  <title > DreamAudio: Customized Zero-Shot Audio Generation with Diffusion Models </title>
+</head>
+
+<body rightmargin="150" leftmargin="150" topmargin="100" bottommargin="100" line-height:160%>
+  <!-- <font size="5"> -->
+    <div class="container">
+      <header role="banner">
+
+      </header>
+      <main role="main">
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+          <br></br>
+          <h1 itemprop="headline" align="center">
+            <font style="font-size:40px; color:black;">DreamAudio: Customized Zero-Shot Audio Generation with Diffusion Models
+            </font>
+          </h1>
+          <br></br>
+          <p style="line-height:1" align="center"><b>
+            <font style="color: #0056b3;">
+              <a href="https://scholar.google.com/citations?user=vFk3_VYAAAAJ&hl=en">Yi Yuan</a><sup>1</sup>,
+              <a href="https://liuxubo717.github.io/">Xubo Liu</a><sup>1</sup>, 
+              <a href="https://haoheliu.github.io/">Haohe Liu</a><sup>1</sup>,  
+              <a href="https://www.surrey.ac.uk/people/xiyuan-kang">Xiyuan Kang</a><sup>1</sup>,
+              <a href="https://scholar.google.com/citations?user=pT8paUkAAAAJ&hl=en">Zhuo Chen</a><sup>2</sup>,
+              <a href="https://scholar.google.com/citations?user=z60SFIwAAAAJ&hl=en&oi=ao">Yuping Wang</a><sup>2</sup>,<br>
+              <a href="https://scholar.google.com/citations?user=3RaOfJkAAAAJ&hl=en&oi=ao">Yuxuan Wang</a><sup>2</sup>,        
+              <a href="https://www.surrey.ac.uk/people/mark-plumbley">Mark D. Plumbley</a><sup>1</sup>,
+              <a href="http://personal.ee.surrey.ac.uk/Personal/W.Wang/">Wenwu Wang</a><sup>1</sup>
+            </font>
+          </b></p>
+          <p style="line-height:0.6" align="center">
+            <font color="061E61">
+              <sup>1</sup>CVSSP, University of Surrey, Guildford, UK &nbsp;&nbsp;&nbsp; 
+              <sup>2</sup>Bytedance, Shenzhen, China
+            </font>
+          </p>
+          <br>
+          <table align=center width=500px>
+          <center>
+                  <span class="link-block">
+                    <a href="https://arxiv.org/abs/2409.07614"
+                       class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon" style="color: black;">
+                          <i class="fa fa-file-text" aria-hidden="true"></i>
+                      </span>
+                      <span style="font-size:22px; color: black; font-family: georgian;"><b>Paper</b></span>
+                    </a>
+            
+    
+                  </span>
+            &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    
+    
+            &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                  <!-- Code Link. -->
+                  <span class="link-block">
+                    <a href="https://github.com/Audio-AGI/FlowSep"
+                       class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon" style="color: black;">
+                          <i class="fab fa-github"></i>
+                      </span>
+                      <span style="font-size:22px; color: black; font-family: georgian;"><b>Code(coming soon)</b></span>
+                      </a>
+                  </span>
+            </center>			  
+             </tr>
+          </table>
+          <br>
+          <br>
+          <section itemprop="entry-text">
+
+            <table class="table" align="center" style="table-layout: fixed;word-break:break-word">
+  
+                  <th>
+                    <h2 id="abstract">
+                      <center>
+                        <h1>Abstract</h1>
+                      </center>
+                    </h2>
+                    <p style="text-align: justify; color:black; font-family: Helvetica, Arial, sans-serif;">
+                        With the development of large-scale diffusion-based and language-modeling-based generative models, impressive progress has been achieved in text-to-audio generation. 
+                        Despite producing high-quality outputs, existing text-to-audio models still mainly aim to generate semantic-aligned sound and fall short on precisely controlling fine-grained acoustic characteristics of specific sounds. 
+                        As a result, for users that need a specific type of sound, they often found it challenging to generate the desired audio clips. In this paper, we present DreamAudio for customized text-to-audio generation (CTTA). 
+                        Specifically, we introduce a new framework that enables the model to extract and identify auditory information from user-provided reference concepts for customized generation. 
+                        Given a few reference audio samples containing personalized audio events, our system can generate new audio samples that align with these specific events. 
+                        Customized datasets are developed for training and testing the customized systems. Experiments show that the proposed model, DreamAudio, generates audio samples that are highly consistent with the concept provided as external references and better aligned with the input text prompts. 
+                        Furthermore, DreamAudio illustrates state-of-the-art performance on few-shot and zero-shot scenarios when processing the external reference with retrieval-augmented pipelines. 
+                        We also provide a new dataset containing special and unique audio events from real-world CTTA cases as the benchmark for customized generation tasks. 
+                    </p>
+                    </th>
+
+            </table>
+            <!-- <hr class="divider"> -->
+
+            <table class="table" align="center" style="table-layout: fixed;word-break:break-word">
+              <th style="border: None;">
+                <h2 id="graph">
+                  <center>
+                  <h1>Customized Text-to-Audio Generation</h1>
+                </center>
+              </h2>
+              <p style="text-align: justify; color:black; font-family: Helvetica, Arial, sans-serif;">
+                Given only a few audio-language reference pairs $\{(\mathbf{a}_1, \mathbf{t}_1), (\mathbf{a}_2, \mathbf{t}_2), \dots, (\mathbf{a}_k, \mathbf{t}_k)\}$, 
+                where each reference audio clip $\mathbf{a}_k$ is associated with a caption $\mathbf{t}_k$. 
+                These provided reference concepts can be either user-defined or automatically retrieved audio-caption pairs. 
+                Formally, our task is to generate the target audio $\mathbf{a}$ conditioned on the input textual prompt $c_t$ and the reference audios $\mathbf{a}_k$ 
+                with their corresponding captions $\mathbf{t}_k$.
+              </p>
+              <figure>
+                <p align="center"><img src="dreamaudio.png" width="100%" class="center" /></p>
+                <figcaption>
+                  
+                  <p style="text-align: justify;">
+                    <center>
+                    <color="061E61"><b>Figure 1:</b> Framework of DreamAudio.
+                    </center>
+                  </p>
+                </figcaption>
+              </figure>
+            </th>
+          </table>
+            
+            
+            <br></br>
+            <h2 id="section_1">
+              <h3 style="color: black;">Demos on Customized-Concatenation</h3>
+            </h2>
+            <div class = "table-container">
+              <table style="table-layout: fixed; width: 100%; word-break: break-word;" align="center">
+                <thead>
+                  <tr>
+                    <th style="width: 250px;"><center>Text Query</center></th>
+                    <th style="width: 250px;"><center>DreamAudio</center></th>
+                    <th style="width: 250px;"><center>Tango</center></th>
+                    <th style="width: 250px;"><center>ReAudioLDM</center></th>
+                    <th style="width: 250px;"><center>AudioGen</center></th>
+                    <th style="width: 250px;"><center>MakeAnAudio</center></th>
+                    <th style="width: 250px;"><center>Reference 1</center></th>
+                    <th style="width: 250px;"><center>Reference 2</center></th>
+                    <th style="width: 250px;"><center>Reference 3</center></th>
+                    <th style="width: 250px;"><center>Reference 4</center></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="vertical-align: top;">
+                      <center>
+                      "a slap and background noise followed by a bell rings in the background followed by a sound effect and another sound effect"
+                      </center>
+                    </td>
+                    <!-- DreamAudio -->
+                    <td style="text-align: center; vertical-align: top;">
+                      <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                      <img src="demos_plogs/generated_plogs/customize_mix/mixed_0/mixed-0.png" width="240" height="125"><br>
+                      <audio controls style="width: 240px;">
+                        <source src="demos/generated/customize_mix/mixed_0/mixed-0.wav" type="audio/wav">
+                      </audio>
+                    </td>
+                    <!-- Tango -->
+                    <td style="text-align: center; vertical-align: top;">
+                      <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                      <img src="demos_plogs/tango_selected/mixed-0.png" width="240" height="125"><br>
+                      <audio controls style="width: 240px;">
+                        <source src="demos/tango_selected/mixed-0.wav" type="audio/wav">
+                      </audio>
+                    </td>
+                    <!-- AudioLDM -->
+                    <td style="text-align: center; vertical-align: top;">
+                      <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                      <img src="demos_plogs/audioldm1_selected/mixed-0.png" width="240" height="125"><br>
+                      <audio controls style="width: 240px;">
+                        <source src="demos/audioldm1_selected/mixed-0.wav" type="audio/wav">
+                      </audio>
+                    </td>
+                    <!-- AudioGen -->
+                    <td style="text-align: center; vertical-align: top;">
+                      <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                      <img src="demos_plogs/audiogen_selected/mixed-0.png" width="240" height="125"><br>
+                      <audio controls style="width: 240px;">
+                        <source src="demos/audiogen_selected/mixed-0.wav" type="audio/wav">
+                      </audio>
+                    </td>
+                    <!-- MakeAnAudio -->
+                    <td style="text-align: center; vertical-align: top;">
+                      <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                      <img src="demos_plogs/makeanaudio_selected/mixed-0.png" width="240" height="125"><br>
+                      <audio controls style="width: 240px;">
+                        <source src="demos/makeanaudio_selected/mixed-0.wav" type="audio/wav">
+                      </audio>
+                    </td>
+                    <!-- Reference 1 -->
+                    <td style="text-align: center; vertical-align: top;">
+                      <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                        <center>
+                        "a slap and background noise"
+                        </center>
+                      </div>
+                      <img src="demos_plogs/customize_mix/mixed_0/YBUtja6no-GI.png" width="240" height="125"><br>
+                      <audio controls style="width: 240px;">
+                        <source src="demos/customize_mix/mixed_0/YBUtja6no-GI.wav" type="audio/wav">
+                      </audio>
+                    </td>
+                    <!-- Reference 2 -->
+                    <td style="text-align: center; vertical-align: top;">
+                      <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                        <center>
+                          "a bell rings in the background"
+                        </center>
+                      </div>
+                      <img src="demos_plogs/customize_mix/mixed_0/Y9fd5hN9ivdE.png" width="240" height="125"><br>
+                      <audio controls style="width: 240px;">
+                        <source src="demos/customize_mix/mixed_0/Y9fd5hN9ivdE.wav" type="audio/wav">
+                      </audio>
+                    </td>
+                    <!-- Reference 3 -->
+                    <td style="text-align: center; vertical-align: top;">
+                      <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                        <center>
+                          "a sound effect"
+                        </center>
+                      </div>
+                      <img src="demos_plogs/customize_mix/mixed_0/YzW_rLl_ybm4.png" width="240" height="125"><br>
+                      <audio controls style="width: 240px;">
+                        <source src="demos/customize_mix/mixed_0/YzW_rLl_ybm4.wav" type="audio/wav">
+                      </audio>
+                    </td>
+                    <!-- Reference 4 -->
+                    <td style="text-align: center; vertical-align: top;">
+                      <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                        <center>
+                          "another sound effect"
+                        </center>
+                      </div>
+                      <img src="demos_plogs/customize_mix/mixed_0/YekzYrFNVQps.png" width="240" height="125"><br>
+                      <audio controls style="width: 240px;">
+                        <source src="demos/customize_mix/mixed_0/YekzYrFNVQps.wav" type="audio/wav">
+                      </audio>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="vertical-align: top;">
+                      <center>
+                      "a woman and man are speaking, and a slapping sound is heard along with human sounds and mechanisms"
+                      </center>
+                    </td>
+                    <!-- DreamAudio -->
+                    <td style="text-align: center; vertical-align: top;">
+                      <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                      <img src="demos_plogs/generated_plogs/customize_mix/mixed_2/mixed-2.png" width="240" height="125"><br>
+                      <audio controls style="width: 240px;">
+                        <source src="demos/generated/customize_mix/mixed_2/mixed-2.wav" type="audio/wav">
+                      </audio>
+                    </td>
+                    <!-- Tango -->
+                    <td style="text-align: center; vertical-align: top;">
+                      <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                      <img src="demos_plogs/tango_selected/mixed-2.png" width="240" height="125"><br>
+                      <audio controls style="width: 240px;">
+                        <source src="demos/tango_selected/mixed-2.wav" type="audio/wav">
+                      </audio>
+                    </td>
+                    <!-- AudioLDM -->
+                    <td style="text-align: center; vertical-align: top;">
+                      <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                      <img src="demos_plogs/audioldm1_selected/mixed-2.png" width="240" height="125"><br>
+                      <audio controls style="width: 240px;">
+                        <source src="demos/audioldm1_selected/mixed-2.wav" type="audio/wav">
+                      </audio>
+                    </td>
+                    <!-- AudioGen -->
+                    <td style="text-align: center; vertical-align: top;">
+                      <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                      <img src="demos_plogs/audiogen_selected/mixed-2.png" width="240" height="125"><br>
+                      <audio controls style="width: 240px;">
+                        <source src="demos/audiogen_selected/mixed-2.wav" type="audio/wav">
+                      </audio>
+                    </td>
+                    <!-- MakeAnAudio -->
+                    <td style="text-align: center; vertical-align: top;">
+                      <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                      <img src="demos_plogs/makeanaudio_selected/mixed-2.png" width="240" height="125"><br>
+                      <audio controls style="width: 240px;">
+                        <source src="demos/makeanaudio_selected/mixed-2.wav" type="audio/wav">
+                      </audio>
+                    </td>
+                    <!-- Reference 1 -->
+                    <td style="text-align: center; vertical-align: top;">
+                      <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                        <center>
+                        "a woman and man are speaking, and a slapping sound is heard"
+                        </center>
+                      </div>
+                      <img src="demos_plogs/customize_mix/mixed_2/YIFtSF2zzUGc.png" width="240" height="125"><br>
+                      <audio controls style="width: 240px;">
+                        <source src="demos/customize_mix/mixed_2/YIFtSF2zzUGc.wav" type="audio/wav">
+                      </audio>
+                    </td>
+                    <!-- Reference 2 -->
+                    <td style="text-align: center; vertical-align: top;">
+                    </td>
+                    <!-- Reference 3 -->
+                    <td style="text-align: center; vertical-align: top;">
+                    </td>
+                    <!-- Reference 4 -->
+                    <td style="text-align: center; vertical-align: top;">
+                    </td>
+                  </tr>
+
+                  
+                </tbody>
+              </table>
+              <div id="accordion">
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        &#x1F449; Click for more examples.
+                      </button>
+                    </h5>
+                  </div>
+                  <!-- more examples for dacse2024-real -->
+                  <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                      <table style="table-layout: fixed; width: 100%; word-break: break-word;" align="center">
+                        <thead>
+                          <tr>
+                            <th style="width: 250px;"><center>Text Query</center></th>
+                            <th style="width: 250px;"><center>DreamAudio</center></th>
+                            <th style="width: 250px;"><center>Tango</center></th>
+                            <th style="width: 250px;"><center>ReAudioLDM</center></th>
+                            <th style="width: 250px;"><center>AudioGen</center></th>
+                            <th style="width: 250px;"><center>MakeAnAudio</center></th>
+                            <th style="width: 250px;"><center>Reference 1</center></th>
+                            <th style="width: 250px;"><center>Reference 2</center></th>
+                            <th style="width: 250px;"><center>Reference 3</center></th>
+                            <th style="width: 250px;"><center>Reference 4</center></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td style="vertical-align: top;">
+                              <center>
+                              "men speaking, a horse neighing, and music, then and are heard followed by boing sounds"
+                              </center>
+                            </td>
+                            <!-- DreamAudio -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/generated_plogs/customize_mix/mixed-23/mixed-23.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/generated/customize_mix/mixed-23/mixed-23.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Tango -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/tango_selected/mixed-23.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/tango_selected/mixed-23.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- AudioLDM -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/audioldm1_selected/mixed-23.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/audioldm1_selected/mixed-23.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- AudioGen -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/audiogen_selected/mixed-23.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/audiogen_selected/mixed-23.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- MakeAnAudio -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/makeanaudio_selected/mixed-23.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/makeanaudio_selected/mixed-23.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Reference 1 -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                <center>
+                                "men speaking and a horse neighing"
+                                </center>
+                              </div>
+                              <img src="demos_plogs/customize_mix/mixed-23/Y6AQLfSO8L5Q.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/customize_mix/mixed-23/Y6AQLfSO8L5Q.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Reference 2 -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                <center>
+                                  "Music"
+                                </center>
+                              </div>
+                              <img src="demos_plogs/customize_mix/mixed-23/Y4y-HdSLix7M.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/customize_mix/mixed-23/Y4y-HdSLix7M.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Reference 3 -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                <center>
+                                  "Boing sounds"
+                                </center>
+                              </div>
+                              <img src="demos_plogs/customize_mix/mixed-23/Y3KOQZTZoaYo.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/customize_mix/mixed-23/Y3KOQZTZoaYo.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Reference 4 -->
+                            <td style="text-align: center; vertical-align: top;">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="vertical-align: top;">
+                              <center>
+                              "the sound of drilling then firework rocket is being fired ,followed by water is hitting a sauna heater"
+                              </center>
+                            </td>
+                            <!-- DreamAudio -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/generated_plogs/customize_mix/mixed_46/mixed_46.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/generated/customize_mix/mixed_46/mixed_46.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Tango -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/tango_selected/mixed-46.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/tango_selected/mixed-46.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- AudioLDM -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/audioldm1_selected/mixed-46.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/audioldm1_selected/mixed-46.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- AudioGen -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/audiogen_selected/mixed-46.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/audiogen_selected/mixed-46.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- MakeAnAudio -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/makeanaudio_selected/mixed-46.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/makeanaudio_selected/mixed-46.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Reference 1 -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                <center>
+                                "the sound of drilling"
+                                </center>
+                              </div>
+                              <img src="demos_plogs/customize_mix/mixed_46/14114-4-0-3.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/customize_mix/mixed_46/14114-4-0-3.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Reference 2 -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                <center>
+                                  "firework rocket is being fired"
+                                </center>
+                              </div>
+                              <img src="demos_plogs/customize_mix/mixed_46/530972.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/customize_mix/mixed_46/530972.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Reference 3 -->
+                            <td style="text-align: center; vertical-align: top;">
+                            </td>
+                            <!-- Reference 4 -->
+                            <td style="text-align: center; vertical-align: top;">
+                          </tr>
+                          <tr>
+                            <td style="vertical-align: top;">
+                              <center>
+                              "a guitar is playing a note , follow by sound of engine running and people drilling, and then a bike is breaking on concrete"
+                              </center>
+                            </td>
+                            <!-- DreamAudio -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/generated_plogs/customize_mix/mixed_99/mixed_99.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/generated/customize_mix/mixed_99/mixed_99.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Tango -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/tango_selected/mixed-99.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/tango_selected/mixed-99.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- AudioLDM -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/audioldm1_selected/mixed-99.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/audioldm1_selected/mixed-99.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- AudioGen -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/audiogen_selected/mixed-99.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/audiogen_selected/mixed-99.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- MakeAnAudio -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/makeanaudio_selected/mixed-99.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/makeanaudio_selected/mixed-99.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Reference 1 -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                <center>
+                                "a guitar is playing a note"
+                                </center>
+                              </div>
+                              <img src="demos_plogs/customize_mix/mixed_99/117704.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/customize_mix/mixed_99/117704.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Reference 2 -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                <center>
+                                  "sound of engine running"
+                                </center>
+                              </div>
+                              <img src="demos_plogs/customize_mix/mixed_99/200786-5-1-4.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/customize_mix/mixed_99/200786-5-1-4.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Reference 3 -->
+                            <td style="text-align: center; vertical-align: top;">
+                            </td>
+                            <!-- Reference 4 -->
+                            <td style="text-align: center; vertical-align: top;">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="vertical-align: top;">
+                              <center>
+                              "children playing then pig bleating then a car horn"
+                              </center>
+                            </td>
+                            <!-- DreamAudio -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/generated_plogs/customize_mix/mixed_31/mixed_31.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/generated/customize_mix/mixed_31/mixed_31.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Tango -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/tango_selected/mixed-31.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/tango_selected/mixed-31.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- AudioLDM -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/audioldm1_selected/mixed-31.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/audioldm1_selected/mixed-31.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- AudioGen -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/audiogen_selected/mixed-31.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/audiogen_selected/mixed-31.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- MakeAnAudio -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                              <img src="demos_plogs/makeanaudio_selected/mixed-31.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/makeanaudio_selected/mixed-31.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Reference 1 -->
+                            <td style="text-align: center; vertical-align: top;">
+                              <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                <center>
+                                "pig bleating"
+                                </center>
+                              </div>
+                              <img src="demos_plogs/customize_mix/mixed_31/4-234644-A-2.png" width="240" height="125"><br>
+                              <audio controls style="width: 240px;">
+                                <source src="demos/customize_mix/mixed_31/4-234644-A-2.wav" type="audio/wav">
+                              </audio>
+                            </td>
+                            <!-- Reference 2 -->
+                            <td style="text-align: center; vertical-align: top;">
+                            </td>
+                            <!-- Reference 3 -->
+                            <td style="text-align: center; vertical-align: top;">
+                            </td>
+                            <!-- Reference 4 -->
+                            <td style="text-align: center; vertical-align: top;">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <br></br>
+              <h2 id="section_2">
+                <h3 style="color: black;">Demos on Customized-Overlay</h3>
+              </h2>
+              <div class = "table-container">
+                <table style="table-layout: fixed; width: 100%; word-break: break-word;" align="center">
+                  <thead>
+                    <tr>
+                      <th style="width: 250px;"><center>Text Query</center></th>
+                      <th style="width: 250px;"><center>DreamAudio</center></th>
+                      <th style="width: 250px;"><center>Tango</center></th>
+                      <th style="width: 250px;"><center>ReAudioLDM</center></th>
+                      <th style="width: 250px;"><center>AudioGen</center></th>
+                      <th style="width: 250px;"><center>MakeAnAudio</center></th>
+                      <th style="width: 250px;"><center>Reference Base</center></th>
+                      <th style="width: 250px;"><center>Reference Front</center></th>
+                      <th style="width: 250px;"><center>Reference Back</center></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="vertical-align: top;">
+                        <center>
+                        "a door is being unlocked with a key then an alarm clock chirps and mechanisms sound at the sametime, sound of airplane engine"
+                        </center>
+                      </td>
+                      <!-- DreamAudio -->
+                      <td style="text-align: center; vertical-align: top;">
+                        <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                        <img src="demos_plogs/generated_plogs/customize_extend/1903/1903.png" width="240" height="125"><br>
+                        <audio controls style="width: 240px;">
+                          <source src="demos/generated/customize_extend/1903/1903.wav" type="audio/wav">
+                        </audio>
+                      </td>
+                      <!-- Tango -->
+                      <td style="text-align: center; vertical-align: top;">
+                        <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                        <img src="demos_plogs/tango_selected/1903.png" width="240" height="125"><br>
+                        <audio controls style="width: 240px;">
+                          <source src="demos/tango_selected/1903.wav" type="audio/wav">
+                        </audio>
+                      </td>
+                      <!-- AudioLDM -->
+                      <td style="text-align: center; vertical-align: top;">
+                        <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                        <img src="demos_plogs/audioldm1_selected/1903.png" width="240" height="125"><br>
+                        <audio controls style="width: 240px;">
+                          <source src="demos/audioldm1_selected/1903.wav" type="audio/wav">
+                        </audio>
+                      </td>
+                      <!-- AudioGen -->
+                      <td style="text-align: center; vertical-align: top;">
+                        <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                        <img src="demos_plogs/audiogen_selected/1903.png" width="240" height="125"><br>
+                        <audio controls style="width: 240px;">
+                          <source src="demos/audiogen_selected/1903.wav" type="audio/wav">
+                        </audio>
+                      </td>
+                      <!-- MakeAnAudio -->
+                      <td style="text-align: center; vertical-align: top;">
+                        <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                        <img src="demos_plogs/makeanaudio_selected/1903.png" width="240" height="125"><br>
+                        <audio controls style="width: 240px;">
+                          <source src="demos/makeanaudio_selected/1903.wav" type="audio/wav">
+                        </audio>
+                      </td>
+                      <!-- Reference 1 -->
+                      <td style="text-align: center; vertical-align: top;">
+                        <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                          <center>
+                          "an alarm clock chirps and mechanisms sound"
+                          </center>
+                        </div>
+                        <img src="demos_plogs/customize_extend/1903/YImibfxlWSxY.png" width="240" height="125"><br>
+                        <audio controls style="width: 240px;">
+                          <source src="demos/customize_extend/1903/YImibfxlWSxY.wav" type="audio/wav">
+                        </audio>
+                      </td>
+                      <!-- Reference 2 -->
+                      <td style="text-align: center; vertical-align: top;">
+                        <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                          <center>
+                            "a door is being unlocked with a key"
+                            <br>&nbsp;
+                          </center>
+                        </div>
+                        <img src="demos_plogs/customize_extend/1903/404505.png" width="240" height="125"><br>
+                        <audio controls style="width: 240px;">
+                          <source src="demos/customize_extend/1903/404505.wav" type="audio/wav">
+                        </audio>
+                      </td>
+                      <!-- Reference 3 -->
+                      <td style="text-align: center; vertical-align: top;">
+                        <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                          <center>
+                            "sound of airplane engine"
+                            <br>&nbsp;
+                          </center>
+                        </div>
+                        <img src="demos_plogs/customize_extend/1903/1-43807-B-47.png" width="240" height="125"><br>
+                        <audio controls style="width: 240px;">
+                          <source src="demos/customize_extend/1903/1-43807-B-47.wav" type="audio/wav">
+                        </audio>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="vertical-align: top;">
+                        <center>
+                        "a cymbal is crashing then a woman is singing with noise"
+                        </center>
+                      </td>
+                      <!-- DreamAudio -->
+                      <td style="text-align: center; vertical-align: top;">
+                        <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                        <img src="demos_plogs/generated_plogs/customize_extend/13315/13315.png" width="240" height="125"><br>
+                        <audio controls style="width: 240px;">
+                          <source src="demos/generated/customize_extend/13315/13315.wav" type="audio/wav">
+                        </audio>
+                      </td>
+                      <!-- Tango -->
+                      <td style="text-align: center; vertical-align: top;">
+                        <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                        <img src="demos_plogs/tango_selected/mixed-2.png" width="240" height="125"><br>
+                        <audio controls style="width: 240px;">
+                          <source src="demos/tango_selected/mixed-2.wav" type="audio/wav">
+                        </audio>
+                      </td>
+                      <!-- AudioLDM -->
+                      <td style="text-align: center; vertical-align: top;">
+                        <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                        <img src="demos_plogs/audioldm1_selected/mixed-2.png" width="240" height="125"><br>
+                        <audio controls style="width: 240px;">
+                          <source src="demos/audioldm1_selected/mixed-2.wav" type="audio/wav">
+                        </audio>
+                      </td>
+                      <!-- AudioGen -->
+                      <td style="text-align: center; vertical-align: top;">
+                        <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                        <img src="demos_plogs/audiogen_selected/mixed-2.png" width="240" height="125"><br>
+                        <audio controls style="width: 240px;">
+                          <source src="demos/audiogen_selected/mixed-2.wav" type="audio/wav">
+                        </audio>
+                      </td>
+                      <!-- MakeAnAudio -->
+                      <td style="text-align: center; vertical-align: top;">
+                        <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                        <img src="demos_plogs/makeanaudio_selected/mixed-2.png" width="240" height="125"><br>
+                        <audio controls style="width: 240px;">
+                          <source src="demos/makeanaudio_selected/mixed-2.wav" type="audio/wav">
+                        </audio>
+                      </td>
+                      <!-- Reference 1 -->
+                      <td style="text-align: center; vertical-align: top;">
+                        <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                          <center>
+                          "a woman is singing with noise"
+                          </center>
+                        </div>
+                        <img src="demos_plogs/customize_extend/13315/Y0fox2tcB3Io.png" width="240" height="125"><br>
+                        <audio controls style="width: 240px;">
+                          <source src="demos/customize_extend/13315/Y0fox2tcB3Io.wav" type="audio/wav">
+                        </audio>
+                      </td>
+                      <!-- Reference 2 -->
+                      <td style="text-align: center; vertical-align: top;">
+                        <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                          <center>
+                          "a cymbal is crashing"
+                          </center>
+                        </div>
+                        <img src="demos_plogs/customize_extend/13315/11504.png" width="240" height="125"><br>
+                        <audio controls style="width: 240px;">
+                          <source src="demos/customize_extend/13315/11504.wav" type="audio/wav">
+                        </audio>
+                      </td>
+                      <!-- Reference 3 -->
+                      <td style="text-align: center; vertical-align: top;">
+                      </td>
+                    </tr>
+  
+                    
+                  </tbody>
+                </table>
+                <div id="accordion">
+                  <div class="card">
+                    <div class="card-header" id="headingOne">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                          &#x1F449; Click for more examples.
+                        </button>
+                      </h5>
+                    </div>
+                    <!-- more examples for dacse2024-real -->
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                      <div class="card-body">
+                        <table style="table-layout: fixed; width: 100%; word-break: break-word;" align="center">
+                          <thead>
+                            <tr>
+                              <th style="width: 250px;"><center>Text Query</center></th>
+                              <th style="width: 250px;"><center>DreamAudio</center></th>
+                              <th style="width: 250px;"><center>Tango</center></th>
+                              <th style="width: 250px;"><center>ReAudioLDM</center></th>
+                              <th style="width: 250px;"><center>AudioGen</center></th>
+                              <th style="width: 250px;"><center>MakeAnAudio</center></th>
+                              <th style="width: 250px;"><center>Reference Base</center></th>
+                              <th style="width: 250px;"><center>Reference Front</center></th>
+                              <th style="width: 250px;"><center>Reference Back</center></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td style="vertical-align: top;">
+                                <center>
+                                "people are drilling in the background, men speak, mechanisms make noise, then a sound is being played"
+                                </center>
+                              </td>
+                              <!-- DreamAudio -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                                <img src="demos_plogs/generated_plogs/customize_extend/17119/17119.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/generated/customize_extend/17119/17119.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Tango -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                                <img src="demos_plogs/tango_selected/17119.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/tango_selected/17119.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- AudioLDM -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                                <img src="demos_plogs/audioldm1_selected/17119.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/audioldm1_selected/17119.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- AudioGen -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                                <img src="demos_plogs/audiogen_selected/17119.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/audiogen_selected/17119.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- MakeAnAudio -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                                <img src="demos_plogs/makeanaudio_selected/17119.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/makeanaudio_selected/17119.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Reference 1 -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                  <center>
+                                  "men speak, mechanisms make noise"
+                                  </center>
+                                </div>
+                                <img src="demos_plogs/customize_extend/17119/Y8OlQ0GVwBtw.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/customize_extend/17119/Y8OlQ0GVwBtw.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Reference 2 -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                  <center>
+                                    "people are drilling"
+                                    <br>&nbsp;
+                                  </center>
+                                </div>
+                                <img src="demos_plogs/customize_extend/17119/58937-4-2-10.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/customize_extend/17119/58937-4-2-10.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Reference 3 -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                  <center>
+                                    "a sound is being played"
+                                    <br>&nbsp;
+                                  </center>
+                                </div>
+                                <img src="demos_plogs/customize_extend/17119/165599.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/customize_extend/17119/165599.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="vertical-align: top;">
+                                <center>
+                                "Instant explosions with food processor blends and people speaking, birds chirping and a child is speaking in the background, someone is hitting a beer bottle with a hammer"
+                                </center>
+                              </td>
+                              <!-- DreamAudio -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;<br>&nbsp;</center></div>
+                                <img src="demos_plogs/generated_plogs/customize_extend/27580/27580.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/generated/customize_extend/27580/27580.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Tango -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;<br>&nbsp;</center></div>
+                                <img src="demos_plogs/tango_selected/27580.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/tango_selected/27580.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- AudioLDM -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;<br>&nbsp;</center></div>
+                                <img src="demos_plogs/audioldm1_selected/27580.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/audioldm1_selected/27580.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- AudioGen -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;<br>&nbsp;</center></div>
+                                <img src="demos_plogs/audiogen_selected/27580.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/audiogen_selected/27580.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- MakeAnAudio -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;<br>&nbsp;</center></div>
+                                <img src="demos_plogs/makeanaudio_selected/27580.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/makeanaudio_selected/27580.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Reference 1 -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                  <center>
+                                  "food processor blends and people speaking, birds chirping and a child is speaking"
+                                  </center>
+                                </div>
+                                <img src="demos_plogs/customize_extend/27580/YIqWIU_7WgFY.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/customize_extend/27580/YIqWIU_7WgFY.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Reference 2 -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                  <center>
+                                    "instant explosions"
+                                    <br>&nbsp;
+                                    <br>&nbsp;
+                                  </center>
+                                </div>
+                                <img src="demos_plogs/customize_extend/27580/347328.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/customize_extend/27580/347328.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Reference 3 -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                  <center>
+                                    "someone is hitting a beer bottle with a hammer"
+                                    <br>&nbsp;
+                                  </center>
+                                </div>
+                                <img src="demos_plogs/customize_extend/27580/162905.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/customize_extend/27580/162905.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="vertical-align: top;">
+                                <center>
+                                "amen is being repeated in the background, rain is hitting a surface with some sounds of dog bark"
+                                </center>
+                              </td>
+                              <!-- DreamAudio -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                                <img src="demos_plogs/generated_plogs/customize_extend/37090/37090.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/generated/customize_extend/37090/37090.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Tango -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                                <img src="demos_plogs/tango_selected/37090.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/tango_selected/37090.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- AudioLDM -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                                <img src="demos_plogs/audioldm1_selected/37090.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/audioldm1_selected/37090.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- AudioGen -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                                <img src="demos_plogs/audiogen_selected/37090.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/audiogen_selected/37090.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- MakeAnAudio -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                                <img src="demos_plogs/makeanaudio_selected/37090.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/makeanaudio_selected/37090.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Reference 1 -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                  <center>
+                                  "rain is hitting a surface"
+                                  </center>
+                                </div>
+                                <img src="demos_plogs/customize_extend/37090/YVM8R3i8Xgp4.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/customize_extend/37090/YVM8R3i8Xgp4.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Reference 2 -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                  <center>
+                                    "amen is being repeated"
+                                  </center>
+                                </div>
+                                <img src="demos_plogs/customize_extend/37090/97805.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/customize_extend/37090/97805.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Reference 3 -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                  <center>
+                                    "some sounds of dog bark"
+                                  </center>
+                                </div>
+                                <img src="demos_plogs/customize_extend/37090/31323-3-0-22.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/customize_extend/37090/31323-3-0-22.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="vertical-align: top;">
+                                <center>
+                                "jazzy is played while chewing and background noise are heard then dog barking"
+                                </center>
+                              </td>
+                              <!-- DreamAudio -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                                <img src="demos_plogs/generated_plogs/customize_extend/39943/39943.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/generated/customize_extend/39943/39943.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Tango -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                                <img src="demos_plogs/tango_selected/39943.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/tango_selected/39943.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- AudioLDM -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                                <img src="demos_plogs/audioldm1_selected/39943.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/audioldm1_selected/39943.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- AudioGen -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                                <img src="demos_plogs/audiogen_selected/39943.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/audiogen_selected/39943.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- MakeAnAudio -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                                <img src="demos_plogs/makeanaudio_selected/39943.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/makeanaudio_selected/39943.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Reference 1 -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                  <center>
+                                  "chewing and background noise are heard"
+                                  </center>
+                                </div>
+                                <img src="demos_plogs/customize_extend/39943/YD2aeVznoVZY.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/customize_extend/39943/YD2aeVznoVZY.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Reference 2 -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                  <center>
+                                  "jazzy is played"
+                                  <br>&nbsp;
+                                  </center>
+                                </div>
+                                <img src="demos_plogs/customize_extend/39943/32189.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/customize_extend/39943/32189.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                              <!-- Reference 3 -->
+                              <td style="text-align: center; vertical-align: top;">
+                                <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                  <center>
+                                  "dog barking"
+                                  <br>&nbsp;
+                                  </center>
+                                </div>
+                                <img src="demos_plogs/customize_extend/39943/209672-3-3-0.png" width="240" height="125"><br>
+                                <audio controls style="width: 240px;">
+                                  <source src="demos/customize_extend/39943/209672-3-3-0.wav" type="audio/wav">
+                                </audio>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              <br></br>
+                <h2 id="section_3">
+                  <h3 style="color: black;">Demos on Customized-Fantasy</h3>
+                </h2>
+                <div class = "table-container">
+                  <table style="table-layout: fixed; width: 100%; word-break: break-word;" align="center">
+                    <thead>
+                      <tr>
+                        <th style="width: 250px;"><center>Text Query</center></th>
+                        <th style="width: 250px;"><center>DreamAudio</center></th>
+                        <th style="width: 250px;"><center>Reference 1</center></th>
+                        <th style="width: 250px;"><center>Reference 2</center></th>
+                        <th style="width: 250px;"><center>Reference 3</center></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="vertical-align: top;">
+                          <center>
+                          "a gozila is fighting with exciting music, followed by minions talk"
+                          </center>
+                        </td>
+                        <!-- DreamAudio -->
+                        <td style="text-align: center; vertical-align: top;">
+                          <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                          <img src="demos_plogs/generate_fancy/mixed_21.png" width="240" height="125"><br>
+                          <audio controls style="width: 240px;">
+                            <source src="demos/generate_fancy/mixed_21.wav" type="audio/wav">
+                          </audio>
+                        </td>
+                        <!-- Reference 1 -->
+                        <td style="text-align: center; vertical-align: top;">
+                          <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                            <center>
+                            "a gozila is fighting"
+                            </center>
+                          </div>
+                          <img src="demos_plogs/fancy_wav_plogs/gozila2.png" width="240" height="125"><br>
+                          <audio controls style="width: 240px;">
+                            <source src="demos/fancy_wav/gozila2.wav" type="audio/wav">
+                          </audio>
+                        </td>
+                        <!-- Reference 2 -->
+                        <td style="text-align: center; vertical-align: top;">
+                          <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                            <center>
+                              "minion talk"
+                            </center>
+                          </div>
+                          <img src="demos_plogs/fancy_wav_plogs/minions2.png" width="240" height="125"><br>
+                          <audio controls style="width: 240px;">
+                            <source src="demos/fancy_wav/minions2.wav" type="audio/wav">
+                          </audio>
+                        </td>
+                        <!-- Reference 3 -->
+                        <td style="text-align: center; vertical-align: top;">
+                          <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                            <center>
+                              "exciting music"
+                            </center>
+                          </div>
+                          <img src="demos_plogs/fancy_wav_plogs/music2.png" width="240" height="125"><br>
+                          <audio controls style="width: 240px;">
+                            <source src="demos/fancy_wav/music2.wav" type="audio/wav">
+                          </audio>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="vertical-align: top;">
+                          <center>
+                          "with some elegant music, the waiter pops the champagne and pours it into glasses"
+                          </center>
+                        </td>
+                        <!-- DreamAudio -->
+                        <td style="text-align: center; vertical-align: top;">
+                          <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                          <img src="demos_plogs/generate_fancy/mixed_19-8.png" width="240" height="125"><br>
+                          <audio controls style="width: 240px;">
+                            <source src="demos/generate_fancy/mixed_19-8.wav" type="audio/wav">
+                          </audio>
+                        </td>
+
+                        <!-- Reference 1 -->
+                        <td style="text-align: center; vertical-align: top;">
+                          <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                            <center>
+                            "elegant music"
+                            </center>
+                          </div>
+                          <img src="demos_plogs/fancy_wav_plogs/elegent_music.png" width="240" height="125"><br>
+                          <audio controls style="width: 240px;">
+                            <source src="demos/fancy_wav/elegent_music.wav" type="audio/wav">
+                          </audio>
+                        </td>
+                        <!-- Reference 2 -->
+                        <td style="text-align: center; vertical-align: top;">
+                          <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                            <center>
+                            "the waiter pops the champagne"
+                            </center>
+                          </div>
+                          <img src="demos_plogs/fancy_wav_plogs/open-champagne.png" width="240" height="125"><br>
+                          <audio controls style="width: 240px;">
+                            <source src="demos/fancy_wav/open-champagne.wav" type="audio/wav">
+                          </audio>
+                        </td>
+                        <!-- Reference 3 -->
+                        <td style="text-align: center; vertical-align: top;">
+                          <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                            <center>
+                            "champagne is poured"
+                            </center>
+                          </div>
+                          <img src="demos_plogs/fancy_wav_plogs/water-glass.png" width="240" height="125"><br>
+                          <audio controls style="width: 240px;">
+                            <source src="demos/fancy_wav/water-glass.wav" type="audio/wav">
+                          </audio>
+                        </td>
+                      </tr>
+    
+                      
+                    </tbody>
+                  </table>
+                  <div id="accordion">
+                    <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                            &#x1F449; Click for more examples.
+                          </button>
+                        </h5>
+                      </div>
+                      <!-- more examples for dacse2024-real -->
+                      <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                          <table style="table-layout: fixed; width: 100%; word-break: break-word;" align="center">
+                            <thead>
+                              <tr>
+                                <th style="width: 250px;"><center>Text Query</center></th>
+                                <th style="width: 250px;"><center>DreamAudio</center></th>
+                                <th style="width: 250px;"><center>Reference 1</center></th>
+                                <th style="width: 250px;"><center>Reference 2</center></th>
+                                <th style="width: 250px;"><center>Reference 3</center></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td style="vertical-align: top;">
+                                  <center>
+                                  "someone close the door, then a train passes by and a cat knocks a glass off the table"
+                                  </center>
+                                </td>
+                                <!-- DreamAudio -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                                  <img src="demos_plogs/generate_fancy/mixed_4-2.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/generate_fancy/mixed_4-2.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 1 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "a train passes by"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/train-passby.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/train-passby.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 2 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                      "cat knocks a glass off the table"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/glass-off.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/glass-off.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 3 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                      "closing door"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/door-close.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/door-close.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="vertical-align: top;">
+                                  <center>
+                                  "the microwave dings, then a Pikachu thunderbolt effect plays, and finally someone closes the door"
+                                  </center>
+                                </td>
+                                <!-- DreamAudio -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                                  <img src="demos_plogs/generate_fancy/mixed_7-6.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/generate_fancy/mixed_7-6.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+        
+                                <!-- Reference 1 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "someone closes the door"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/door-close.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/door-close.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 2 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "a Pikachu thunderbolt effect plays"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/thunderbolt.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/thunderbolt.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 3 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "the microwave dings"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/microwave-timer.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/microwave-timer.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="vertical-align: top;">
+                                  <center>
+                                  "horror music plays and a car dring through, followed by a Godzilla roar"
+                                  </center>
+                                </td>
+                                <!-- DreamAudio -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                                  <img src="demos_plogs/generate_fancy/mixed_9-3.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/generate_fancy/mixed_9-3.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+        
+                                <!-- Reference 1 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "horror music plays"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/horror_music_full.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/horror_music_full.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 2 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "a Godzilla roar"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/godzilla-roar.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/godzilla-roar.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 3 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "a car dring through"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/car_driving.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/car_driving.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="vertical-align: top;">
+                                  <center>
+                                  "a car drives by fast and a Minion make the ambluence sounds, with small bid chrips"
+                                  </center>
+                                </td>
+                                <!-- DreamAudio -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;<br>&nbsp;</center></div>
+                                  <img src="demos_plogs/generate_fancy/mixed_13-8.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/generate_fancy/mixed_13-8.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+        
+                                <!-- Reference 1 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "a small bird chirps"
+                                    <br>&nbsp;
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/bird_chirp.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/bird_chirp.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 2 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "a Minion make the ambluence sounds"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/minion_sing.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/minion_sing.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 3 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "a car drives by quickly"
+                                    <br>&nbsp;
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/car_driving.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/car_driving.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="vertical-align: top;">
+                                  <center>
+                                  "the audience starts to clap hands, then a sudden gunshot is heard, followed by a Street Fighter KO sound"
+                                  </center>
+                                </td>
+                                <!-- DreamAudio -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                                  <img src="demos_plogs/generate_fancy/mixed_14-2.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/generate_fancy/mixed_14-2.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+        
+                                <!-- Reference 1 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "a sudden gunshot"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/gun_shot.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/gun_shot.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 2 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "a Street Fighter KO sound"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/ko.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/ko.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 3 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "the audience clap hands"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/audience_cheer.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/audience_cheer.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="vertical-align: top;">
+                                  <center>
+                                  "a bus engine revs outside with a horn, and a dog barking"
+                                  </center>
+                                </td>
+                                <!-- DreamAudio -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                                  <img src="demos_plogs/generate_fancy/mixed_15-2.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/generate_fancy/mixed_15-2.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+        
+                                <!-- Reference 1 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "a bus engine revs outside"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/bus_engine.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/bus_engine.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 2 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "the bus horn sounds"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/bus_horn.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/bus_horn.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 3 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "dog barking"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/dog_bark2.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/dog_bark2.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="vertical-align: top;">
+                                  <center>
+                                  "some lazer gun shootingwith the Avengers theme playing, and then a door is closed"
+                                  </center>
+                                </td>
+                                <!-- DreamAudio -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                                  <img src="demos_plogs/generate_fancy/mixed_16-4.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/generate_fancy/mixed_16-4.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+        
+                                <!-- Reference 1 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "a door is opened"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/door-open.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/door-open.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 2 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "the Avengers theme music"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/avengers_full.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/avengers_full.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 3 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "lazer gun shooting"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/lazer_gun.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/lazer_gun.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="vertical-align: top;">
+                                  <center>
+                                  "someone flicks a lighter, followed by a firework blast"
+                                  </center>
+                                </td>
+                                <!-- DreamAudio -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center>&nbsp;</center></div>
+                                  <img src="demos_plogs/generate_fancy/mixed_20-8.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/generate_fancy/mixed_20-8.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+        
+                                <!-- Reference 1 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "flicks a lighter"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/lighter.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/lighter.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 2 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                  <div style="max-height: 80px; overflow-y: auto; font-size: 14px;">
+                                    <center>
+                                    "a firework blast"
+                                    </center>
+                                  </div>
+                                  <img src="demos_plogs/fancy_wav_plogs/firework.png" width="240" height="125"><br>
+                                  <audio controls style="width: 240px;">
+                                    <source src="demos/fancy_wav/firework.wav" type="audio/wav">
+                                  </audio>
+                                </td>
+                                <!-- Reference 3 -->
+                                <td style="text-align: center; vertical-align: top;">
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+
+            <br></br>
+            <h3>Customized-Fantasy (Full)</h3>
+            <div class="sound-table-container">
+              <table class="sound-table">
+                <thead>
+                  <tr>
+                    <th>WAV</th>
+                    <th>Caption</th>
+                    <th>Reference 1</th>
+                    <th>Reference 2</th>
+                    <th>Reference 3</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  <tr>
+                    <td>fancy_1.wav</td>
+                    <td>a Godzilla roar, and then a faint explosion rumbles in the distance, followed by a small dog barks.</td>
+                    <td>a small dog barks</td>
+                    <td>a Godzilla roar</td>
+                    <td>a faint explosion rumbles in the distance</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_2.wav</td>
+                    <td>a child plays with Mario coin sounds, followed by someone cheers.</td>
+                    <td>a child plays with </td>
+                    <td>Mario coin sounds</td>
+                    <td>someone cheers</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_3.wav</td>
+                    <td>two minion chatter with each other, then a train horn sounds in the distance, followed by the champagne popped at the end.</td>
+                    <td>a train horn sounds in the distance</td>
+                    <td>Minion chatter wuth each other</td>
+                    <td>the champagne has been popped</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_4.wav</td>
+                    <td>someone close the door, then a train passes by and a cat knocks a glass off the table.</td>
+                    <td>a train passes by</td>
+                    <td>a cat knocks a glass off the table</td>
+                    <td>the sound of a closing door</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_5.wav</td>
+                    <td>the doorbell rings, and a mother is playing with baby, followed by a Mario jump sound.</td>
+                    <td>a mother is playing with baby</td>
+                    <td>the doorbell rings</td>
+                    <td>a Mario jump sound</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_6.wav</td>
+                    <td>an airplane flies overhead, followed by someone running and taking photos.</td>
+                    <td>an airplane flies overhead</td>
+                    <td>someone running</td>
+                    <td>a camera shutter clicks</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_7.wav</td>
+                    <td>the microwave dings, then a Pikachu thunderbolt effect plays, and finally someone closes the door.</td>
+                    <td>someone closes the door</td>
+                    <td>a Pikachu thunderbolt effect plays</td>
+                    <td>the microwave dings</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_8.wav</td>
+                    <td>footsteps clatter on tile, a T-Rex roars and a cat hisses in surprise.</td>
+                    <td>footsteps clatter on tile</td>
+                    <td>a T-Rex roars</td>
+                    <td>a cat hisses in surprise</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_9.wav</td>
+                    <td>horror music plays and a car dring through, followed by a Godzilla roar.</td>
+                    <td>horror music plays</td>
+                    <td>a Godzilla roar</td>
+                    <td>a car dring through</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_10.wav</td>
+                    <td>a bird is achirping outside while someone closes the door, followed by a child cries.</td>
+                    <td>a child cries</td>
+                    <td>someone closes the door</td>
+                    <td>a bird chirps outside</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_11.wav</td>
+                    <td>it's raining heavily outside, then an umbrella snaps open, followed by a distant car horn honking twice.</td>
+                    <td>heavy rain outside</td>
+                    <td>an umbrella snaps open</td>
+                    <td>a distant car horn honks twice</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_12.wav</td>
+                    <td>a baby is smiling happily, a Transformer changes into a car, and start the engine.</td>
+                    <td>a baby smiles happily</td>
+                    <td>a Transformer changes into a car</td>
+                    <td>start the engine</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_13.wav</td>
+                    <td>a car drives by fast and a Minion make the ambluence sounds, with small bid chrips.</td>
+                    <td>a small bird chirps</td>
+                    <td>a Minion make the ambluence sounds</td>
+                    <td>a car drives by quickly</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_14.wav</td>
+                    <td>the audience starts to clap hands, then a sudden gunshot is heard, followed by a Street Fighter KO sound.</td>
+                    <td>a sudden gunshot</td>
+                    <td>a Street Fighter KO sound</td>
+                    <td>the audience clap hands</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_15.wav</td>
+                    <td>a bus engine revs outside with a horn, and a dog barking.</td>
+                    <td>a bus engine revs outside</td>
+                    <td>the bus horn sounds</td>
+                    <td>a dogd barking</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_16.wav</td>
+                    <td>Some lazer gun shootingwith the Avengers theme playing, and then a door is closed.</td>
+                    <td>a door is opened</td>
+                    <td>the Avengers theme music is heard</td>
+                    <td>lazer gun shooting</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_17.wav</td>
+                    <td>someone uses the keys and closes the door, then a bicycle bell rings outside.</td>
+                    <td>someone unlocks and closes the door</td>
+                    <td>keys jingle</td>
+                    <td>a bicycle bell rings outside</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_18.wav</td>
+                    <td>someone running down and knock the door, a faint Poke Ball recall whoosh is heard.</td>
+                    <td>someone locks the front door</td>
+                    <td>a faint Poke Ball recall whoosh is heard</td>
+                    <td>someone running down the driveway</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_19.wav</td>
+                    <td>with some elegant music, the waiter pops the champagne and pours it into glasses.</td>
+                    <td>elegant music</td>
+                    <td>the waiter pops the champagne</td>
+                    <td>champagne is poured</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_20.wav</td>
+                    <td>someone flicks a lighter, followed by a firework blast.</td>
+                    <td>flicks a lighter</td>
+                    <td>a firework blast</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>fancy_21.wav</td>
+                    <td>a gozila is fighting with exciting music, followed by minions talk</td>
+                    <td>a gozila is fighting</td>
+                    <td>minions talk</td>
+                    <td>exciting music</td>
+                  </tr>
+                  <tr>
+                    <td>fancy_22.wav</td>
+                    <td>a battle music with some Star Wars laser gun sounds, and then the planet explodes.</td>
+                    <td>battle music </td>
+                    <td>Star Wars laser gun sounds</td>
+                    <td>the planet explodes</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+              <br></br>
+                  <h2 id="section_3">
+                    <h3 style="color: black;">Demos on AudioCaps</h3>
+                  </h2>
+                  <div class = "table-container">
+                    <table style="table-layout: fixed; width: 100%; word-break: break-word;" align="center">
+                      <thead>
+                        <tr>
+                          <th style="width: 300px;"><center>Text Query</center></th>
+                          <th style="width: 250px;"><center>Ground Truth</center></th>
+                          <th style="width: 250px;"><center>DreamAudio</center></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="vertical-align: top;">
+                            <center>
+                            "rustling pigeons coo"
+                            </center>
+                          </td>
+                        <!-- ground truth -->
+                        <td style="text-align: center; vertical-align: top;">
+                          <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                          <img src="demos_plogs/audiocaps_gt_plogs/Y_BSmz3SEW1w.png" width="240" height="125"><br>
+                          <audio controls style="width: 240px;">
+                            <source src="demos/audiocaps_gt/Y_BSmz3SEW1w.wav" type="audio/wav">
+                          </audio>
+                        </td>
+                          <!-- DreamAudio -->
+                          <td style="text-align: center; vertical-align: top;">
+                            <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                            <img src="demos_plogs/generated_plogs/audiocaps/Y_BSmz3SEW1w.png" width="240" height="125"><br>
+                            <audio controls style="width: 240px;">
+                              <source src="demos/generated/audiocaps/Y_BSmz3SEW1w.wav" type="audio/wav">
+                            </audio>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td style="vertical-align: top;">
+                            <center>
+                            "a vehicle engine revving as a crowd of people talk"
+                            </center>
+                          </td>
+                          <!-- ground truth -->
+                        <td style="text-align: center; vertical-align: top;">
+                          <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                          <img src="demos_plogs/audiocaps_gt_plogs/Y_ezm-TpKj1w.png" width="240" height="125"><br>
+                          <audio controls style="width: 240px;">
+                            <source src="demos/audiocaps_gt/Y_ezm-TpKj1w.wav" type="audio/wav">
+                          </audio>
+                        </td>
+                          <!-- DreamAudio -->
+                          <td style="text-align: center; vertical-align: top;">
+                            <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                            <img src="demos_plogs/generated_plogs/audiocaps/Y_ezm-TpKj1w.png" width="240" height="125"><br>
+                            <audio controls style="width: 240px;">
+                              <source src="demos/generated/audiocaps/Y_ezm-TpKj1w.wav" type="audio/wav">
+                            </audio>
+                          </td>
+                        </tr>
+      
+                        
+                      </tbody>
+                    </table>
+                    <div id="accordion">
+                      <div class="card">
+                        <div class="card-header" id="headingOne">
+                          <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                              &#x1F449; Click for more examples.
+                            </button>
+                          </h5>
+                        </div>
+                        <!-- more examples for dacse2024-real -->
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                          <div class="card-body">
+                            <table style="table-layout: fixed; width: 100%; word-break: break-word;" align="center">
+                              <thead>
+                                <tr>
+                                  <th style="width: 300px;"><center>Text Query</center></th>
+                                  <th style="width: 250px;"><center>Ground Truth</center></th>
+                                  <th style="width: 250px;"><center>DreamAudio</center></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td style="vertical-align: top;">
+                                    <center>
+                                    "water splashing and trickling as wind blows into a microphone while a man speaks over a radio"
+                                    </center>
+                                  </td>
+                                  <!-- ground truth -->
+                        <td style="text-align: center; vertical-align: top;">
+                          <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                          <img src="demos_plogs/audiocaps_gt_plogs/Y0_ogYGDGDco.png" width="240" height="125"><br>
+                          <audio controls style="width: 240px;">
+                            <source src="demos/audiocaps_gt/Y0_ogYGDGDco.wav" type="audio/wav">
+                          </audio>
+                        </td>
+                                  <!-- DreamAudio -->
+                                  <td style="text-align: center; vertical-align: top;">
+                                    <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                                    <img src="demos_plogs/generated_plogs/audiocaps/Y0_ogYGDGDco.png" width="240" height="125"><br>
+                                    <audio controls style="width: 240px;">
+                                      <source src="demos/generated/audiocaps/Y0_ogYGDGDco.wav" type="audio/wav">
+                                    </audio>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style="vertical-align: top;">
+                                    <center>
+                                    "a dog barking as a man is talking while birds chirp and wind blows into a microphone"
+                                    </center>
+                                  </td>
+                                  <!-- ground truth -->
+                        <td style="text-align: center; vertical-align: top;">
+                          <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                          <img src="demos_plogs/audiocaps_gt_plogs/Y0yxEvdnimGg.png" width="240" height="125"><br>
+                          <audio controls style="width: 240px;">
+                            <source src="demos/audiocaps_gt/Y0yxEvdnimGg.wav" type="audio/wav">
+                          </audio>
+                        </td>
+                                  <!-- DreamAudio -->
+                                  <td style="text-align: center; vertical-align: top;">
+                                    <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                                    <img src="demos_plogs/generated_plogs/audiocaps/Y0yxEvdnimGg.png" width="240" height="125"><br>
+                                    <audio controls style="width: 240px;">
+                                      <source src="demos/generated/audiocaps/Y0yxEvdnimGg.wav" type="audio/wav">
+                                    </audio>
+                                  </td>
+                                <tr>
+                                  <td style="vertical-align: top;">
+                                    <center>
+                                    "A sound of vibrating motor"
+                                    </center>
+                                  </td>
+                                  <!-- ground truth -->
+                        <td style="text-align: center; vertical-align: top;">
+                          <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                          <img src="demos_plogs/audiocaps_gt_plogs/Y1N_DtRpdAp8.png" width="240" height="125"><br>
+                          <audio controls style="width: 240px;">
+                            <source src="demos/audiocaps_gt/Y1N_DtRpdAp8.wav" type="audio/wav">
+                          </audio>
+                        </td>
+                                  <!-- DreamAudio -->
+                                  <td style="text-align: center; vertical-align: top;">
+                                    <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                                    <img src="demos_plogs/generated_plogs/audiocaps/Y1N_DtRpdAp8.png" width="240" height="125"><br>
+                                    <audio controls style="width: 240px;">
+                                      <source src="demos/generated/audiocaps/Y1N_DtRpdAp8.wav" type="audio/wav">
+                                    </audio>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style="vertical-align: top;">
+                                    <center>
+                                    "an aircraft engine running then slowing down after a plastic click"
+                                    </center>
+                                  </td>
+                                  <!-- ground truth -->
+                                  <td style="text-align: center; vertical-align: top;">
+                                    <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                                    <img src="demos_plogs/audiocaps_gt_plogs/Y1Og2TJ3bXW0.png" width="240" height="125"><br>
+                                    <audio controls style="width: 240px;">
+                                      <source src="demos/audiocaps_gt/Y1Og2TJ3bXW0.wav" type="audio/wav">
+                                    </audio>
+                                  </td>
+                                  <!-- DreamAudio -->
+                                  <td style="text-align: center; vertical-align: top;">
+                                    <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                                    <img src="demos_plogs/generated_plogs/audiocaps/Y1Og2TJ3bXW0.png" width="240" height="125"><br>
+                                    <audio controls style="width: 240px;">
+                                      <source src="demos/generated/audiocaps/Y1Og2TJ3bXW0.wav" type="audio/wav">
+                                    </audio>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style="vertical-align: top;">
+                                    <center>
+                                    "a man is speaking followed by a tap and motorcycle turning on"
+                                    </center>
+                                  </td>
+                                  <!-- ground truth -->
+                                  <td style="text-align: center; vertical-align: top;">
+                                    <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                                    <img src="demos_plogs/audiocaps_gt_plogs/Y1WTSW96XP6E.png" width="240" height="125"><br>
+                                    <audio controls style="width: 240px;">
+                                      <source src="demos/audiocaps_gt/Y1WTSW96XP6E.wav" type="audio/wav">
+                                    </audio>
+                                  </td>
+                                  <!-- DreamAudio -->
+                                  <td style="text-align: center; vertical-align: top;">
+                                    <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                                    <img src="demos_plogs/generated_plogs/audiocaps/Y1WTSW96XP6E.png" width="240" height="125"><br>
+                                    <audio controls style="width: 240px;">
+                                      <source src="demos/generated/audiocaps/Y1WTSW96XP6E.wav" type="audio/wav">
+                                    </audio>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style="vertical-align: top;">
+                                    <center>
+                                    "some child speaking in the distant and a toilet flushing"
+                                    </center>
+                                  </td>
+                                  <!-- ground truth -->
+                                  <td style="text-align: center; vertical-align: top;">
+                                    <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                                    <img src="demos_plogs/audiocaps_gt_plogs/Y2ErfX6ZT5pM.png" width="240" height="125"><br>
+                                    <audio controls style="width: 240px;">
+                                      <source src="demos/audiocaps_gt/Y2ErfX6ZT5pM.wav" type="audio/wav">
+                                    </audio>
+                                  </td>
+                                  <!-- DreamAudio -->
+                                  <td style="text-align: center; vertical-align: top;">
+                                    <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                                    <img src="demos_plogs/generated_plogs/audiocaps/Y2ErfX6ZT5pM.png" width="240" height="125"><br>
+                                    <audio controls style="width: 240px;">
+                                      <source src="demos/generated/audiocaps/Y2ErfX6ZT5pM.wav" type="audio/wav">
+                                    </audio>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style="vertical-align: top;">
+                                    <center>
+                                    "ocean waves crashing as a man talks in the distance and wind heavily blows into a microphone"
+                                    </center>
+                                  </td>
+                                  <!-- ground truth -->
+                                  <td style="text-align: center; vertical-align: top;">
+                                    <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                                    <img src="demos_plogs/audiocaps_gt_plogs/Y3MoF8myFs8Y.png" width="240" height="125"><br>
+                                    <audio controls style="width: 240px;">
+                                      <source src="demos/audiocaps_gt/Y3MoF8myFs8Y.wav" type="audio/wav">
+                                    </audio>
+                                  </td>
+                                  <!-- DreamAudio -->
+                                  <td style="text-align: center; vertical-align: top;">
+                                    <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                                    <img src="demos_plogs/generated_plogs/audiocaps/Y3MoF8myFs8Y.png" width="240" height="125"><br>
+                                    <audio controls style="width: 240px;">
+                                      <source src="demos/generated/audiocaps/Y3MoF8myFs8Y.wav" type="audio/wav">
+                                    </audio>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style="vertical-align: top;">
+                                    <center>
+                                    "a man gives a speech followed by applause"
+                                    </center>
+                                  </td>
+                                  <!-- ground truth -->
+                                  <td style="text-align: center; vertical-align: top;">
+                                    <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                                    <img src="demos_plogs/audiocaps_gt_plogs/Y4CAMv5nlr-0.png" width="240" height="125"><br>
+                                    <audio controls style="width: 240px;">
+                                      <source src="demos/audiocaps_gt/Y4CAMv5nlr-0.wav" type="audio/wav">
+                                    </audio>
+                                  </td>
+                                  <!-- DreamAudio -->
+                                  <td style="text-align: center; vertical-align: top;">
+                                    <div style="max-height: 80px; overflow-y: auto; font-size: 14px;"><center></center></div>
+                                    <img src="demos_plogs/generated_plogs/audiocaps/Y4CAMv5nlr-0.png" width="240" height="125"><br>
+                                    <audio controls style="width: 240px;">
+                                      <source src="demos/generated/audiocaps/Y4CAMv5nlr-0.wav" type="audio/wav">
+                                    </audio>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+
+              <center>
+              <h2>Acknowledgement</h2>
+              </center>
+              <p style="text-align: jus
+              tify; color:black;font-family: georgian;">
+                <font> 
+                  This research was partly supported by a research scholarship from the China Scholarship Council (CSC), 
+                  funded by British Broadcasting Corporation Research and Development (BBC R&D), 
+                  Engineering and Physical Sciences Research Council~(EPSRC) Grant EP/T019751/1 'AI for Sound', 
+                  and a PhD scholarship from the Centre for Vision, Speech and Signal Processing(CVSSP), University of Surrey. 
+                  For the purpose of open access, the authors have applied a Creative Commons Attribution(CC BY) license to any Author Accepted Manuscript version arising.
+              </font></p>
+              <br></br>
+              <hr>
+
+              <p style="text-align: justify; color:black;font-family: georgian;">
+                <font> 
+              Page updated on 10 April 2025
+            </font></p>
+              <br></br>
+          </section>
+        </article>
+      </main>
+
+    </div>
+
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+      ga('create', 'UA-139981676-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+         HTML: ["input/TeX","output/HTML-CSS"],
+         TeX: {
+                Macros: {
+                         bm: ["\\boldsymbol{#1}", 1],
+                         argmax: ["\\mathop{\\rm arg\\,max}\\limits"],
+                         argmin: ["\\mathop{\\rm arg\\,min}\\limits"]},
+                extensions: ["AMSmath.js","AMSsymbols.js"],
+                equationNumbers: { autoNumber: "AMS" } },
+         extensions: ["tex2jax.js"],
+         jax: ["input/TeX","output/HTML-CSS"],
+         tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true },
+         "HTML-CSS": { availableFonts: ["TeX"],
+                       linebreaks: { automatic: true } }
+     });
+ </script>
+
+    <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+       tex2jax: {
+         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+       }
+     });
+ </script>
+
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+      </script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

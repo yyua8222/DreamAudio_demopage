@@ -1,0 +1,20 @@
+{"wav": "/mixed_21.wav", "caption": "a gozila is fighting with exciting music, followed by minions talk", "label": ["a gozila is fighting", "minions talk","exciting music"], "wav_list": ["gozila2.wav", "minions2.wav","music2.wav"], "length": 9.5, "list": [4.0, 5.0, 0.5], "mix_data": true}
+
+{"wav": "/mixed_19.wav", "caption": "With some elegant music, the waiter pops the champagne and pours it into glasses.", "label": ["elegant music", "the waiter pops the champagne", "champagne is poured"], "wav_list": ["elegent_music.wav", "open-champagne.wav", "water-glass.wav"], "length": 9.5, "list": [4.0, 5.0, 0.5], "mix_data": true}
+
+{"wav": "/mixed_4.wav", "caption": "Someone close the door, then a train passes by and a cat knocks a glass off the table.", "label": ["a train passes by", "a cat knocks a glass off the table", "the sound of a closing door"], "wav_list": ["train-passby.wav", "glass-off.wav", "door-close.wav"], "length": 9.5, "list": [4.0, 5.0, 0.5], "mix_data": true}
+
+{"wav": "/mixed_7.wav", "caption": "The microwave dings, then a Pikachu thunderbolt effect plays, and finally someone closes the door.", "label": ["someone closes the door", "a Pikachu thunderbolt effect plays", "the microwave dings"], "wav_list": ["door-close.wav", "thunderbolt.wav", "microwave-timer.wav"], "length": 9.5, "list": [4.0, 5.0, 0.5], "mix_data": true}
+
+{"wav": "/mixed_9.wav", "caption": "horror music plays and a car dring through, followed by a Godzilla roar.", "label": ["horror music plays", "a Godzilla roar", "a car dring through"], "wav_list": ["horror_music_full.wav", "godzilla-roar.wav", "car_driving.wav"], "length": 9.5, "list": [4.0, 5.0, 0.5], "mix_data": true}
+
+{"wav": "/mixed_13.wav", "caption": "A car drives by fast and a Minion make the ambluence sounds, with small bid chrips.", "label": ["a small bird chirps", "a Minion make the ambluence sounds", "a car drives by quickly"], "wav_list": ["bird_chirp.wav", "minion_sing.wav", "car_driving.wav"], "length": 9.5, "list": [4.0, 5.0, 0.5], "mix_data": true}
+
+{"wav": "/mixed_14.wav", "caption": "The audience starts to clap hands, then a sudden gunshot is heard, followed by a Street Fighter KO sound.", "label": ["a sudden gunshot", "a Street Fighter KO sound", "the audience clap hands"], "wav_list": ["gun_shot.wav", "ko.wav", "audience_cheer.wav"], "length": 9.5, "list": [4.0, 5.0, 0.5], "mix_data": true}
+
+{"wav": "/mixed_15.wav", "caption": "A bus engine revs outside with a horn, and a dog barking.", "label": ["a bus engine revs outside", "the bus horn sounds", "a dog barking"], "wav_list": ["bus_engine.wav", "bus_horn.wav", "dog_bark2.wav"], "length": 9.5, "list": [4.0, 5.0, 0.5], "mix_data": true}
+
+{"wav": "/mixed_16.wav", "caption": "Some lazer gun shootingwith the Avengers theme playing, and then a door is closed.", "label": ["a door is opened", "the Avengers theme music", "lazer gun shooting"], "wav_list": ["door-open.wav", "avengers_full.wav", "lazer_gun.wav"], "length": 9.5, "list": [4.0, 5.0, 0.5], "mix_data": true}
+
+{"wav": "/mixed_20.wav", "caption": "Someone flicks a lighter, followed by a firework blast.", "label": ["flicks a lighter", "a firework blast"], "wav_list": ["lighter.wav", "firework.wav"], "length": 9.5, "list": [4.0, 5.0, 0.5], "mix_data": true}
+
