@@ -153,7 +153,7 @@
     z-index: 1;
   }
   </style>
-  <title > DreamAudio: Customized Zero-Shot Audio Generation with Diffusion Models </title>
+  <title > DreamAudio: Customized Text-to-Audio Generation with Diffusion Models </title>
 </head>
 
 <body rightmargin="150" leftmargin="150" topmargin="100" bottommargin="100" line-height:160%>
@@ -166,7 +166,7 @@
         <article itemscope itemtype="https://schema.org/BlogPosting">
           <br></br>
           <h1 itemprop="headline" align="center">
-            <font style="font-size:40px; color:black;">DreamAudio: Customized Zero-Shot Audio Generation with Diffusion Models
+            <font style="font-size:40px; color:black;">DreamAudio: Customized Text-to-Audio Generation with Diffusion Models
             </font>
           </h1>
           <br></br>
@@ -176,8 +176,7 @@
               <a href="https://liuxubo717.github.io/">Xubo Liu</a><sup>1</sup>, 
               <a href="https://haoheliu.github.io/">Haohe Liu</a><sup>1</sup>,  
               <a href="https://www.surrey.ac.uk/people/xiyuan-kang">Xiyuan Kang</a><sup>1</sup>,
-              <a href="https://scholar.google.com/citations?user=pT8paUkAAAAJ&hl=en">Zhuo Chen</a><sup>2</sup>,
-              <a href="https://scholar.google.com/citations?user=z60SFIwAAAAJ&hl=en&oi=ao">Yuping Wang</a><sup>2</sup>,<br>
+              <a href="https://scholar.google.com/citations?user=pT8paUkAAAAJ&hl=en">Zhuo Chen</a><sup>2</sup>,<br>
               <a href="https://scholar.google.com/citations?user=3RaOfJkAAAAJ&hl=en&oi=ao">Yuxuan Wang</a><sup>2</sup>,        
               <a href="https://www.surrey.ac.uk/people/mark-plumbley">Mark D. Plumbley</a><sup>1</sup>,
               <a href="http://personal.ee.surrey.ac.uk/Personal/W.Wang/">Wenwu Wang</a><sup>1</sup>
@@ -193,7 +192,7 @@
           <table align=center width=500px>
           <center>
                   <span class="link-block">
-                    <a href="https://arxiv.org/abs/2409.07614"
+                    <a href="https://arxiv.org/abs/2509.06027"
                        class="external-link button is-normal is-rounded is-dark">
                       <span class="icon" style="color: black;">
                           <i class="fa fa-file-text" aria-hidden="true"></i>
@@ -233,14 +232,16 @@
                       </center>
                     </h2>
                     <p style="text-align: justify; color:black; font-family: Helvetica, Arial, sans-serif;">
-                        With the development of large-scale diffusion-based and language-modeling-based generative models, impressive progress has been achieved in text-to-audio generation. 
-                        Despite producing high-quality outputs, existing text-to-audio models still mainly aim to generate semantic-aligned sound and fall short on precisely controlling fine-grained acoustic characteristics of specific sounds. 
-                        As a result, for users that need a specific type of sound, they often found it challenging to generate the desired audio clips. In this paper, we present DreamAudio for customized text-to-audio generation (CTTA). 
-                        Specifically, we introduce a new framework that enables the model to extract and identify auditory information from user-provided reference concepts for customized generation. 
-                        Given a few reference audio samples containing personalized audio events, our system can generate new audio samples that align with these specific events. 
-                        Customized datasets are developed for training and testing the customized systems. Experiments show that the proposed model, DreamAudio, generates audio samples that are highly consistent with the concept provided as external references and better aligned with the input text prompts. 
-                        Furthermore, DreamAudio illustrates state-of-the-art performance on few-shot and zero-shot scenarios when processing the external reference with retrieval-augmented pipelines. 
-                        We also provide a new dataset containing special and unique audio events from real-world CTTA cases as the benchmark for customized generation tasks. 
+                      With the development of large-scale diffusion-based and language-modeling-based generative models, 
+                      impressive progress has been achieved in text-to-audio generation. Despite producing high-quality outputs, 
+                      existing text-to-audio models mainly aim to generate semantically aligned sound and fall short on precisely controlling fine-grained acoustic characteristics of specific sounds. 
+                      As a result, users that need specific sound content may find it challenging to generate the desired audio clips. 
+                      In this paper, we present DreamAudio for customized text-to-audio generation~(CTTA). 
+                      Specifically, we introduce a new framework that is designed to enable the model to identify auditory information from user-provided reference concepts for audio generation. 
+                      Given a few reference audio samples containing personalized audio events, our system can generate new audio samples that include these specific events. 
+                      In addition, two types of datasets are developed for training and testing the customized systems. The experiments show that the proposed model, 
+                      DreamAudio, generates audio samples that are highly consistent with the customized audio features and aligned well with the input text prompts. 
+                      Furthermore, DreamAudio offers comparable performance in general text-to-audio tasks. We also provide a human-involved dataset containing audio events from real-world CTTA cases as the benchmark for customized generation tasks. 
                     </p>
                     </th>
 
@@ -262,7 +263,7 @@
                 with their corresponding captions $\mathbf{t}_k$.
               </p>
               <figure>
-                <p align="center"><img src="dreamaudio.png" width="100%" class="center" /></p>
+                <p align="center"><img src="overview.jpg" width="100%" class="center" /></p>
                 <figcaption>
                   
                   <p style="text-align: justify;">
@@ -2391,7 +2392,7 @@
 
               <p style="text-align: justify; color:black;font-family: georgian;">
                 <font> 
-              Page updated on 10 April 2025
+              Page updated on 8 September 2025
             </font></p>
               <br></br>
           </section>
@@ -2453,3 +2454,4 @@
 </body>
 
 </html>
+
